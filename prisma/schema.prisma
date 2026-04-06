@@ -45,7 +45,7 @@ model WatchList {
   userId    String
   movieId   String
   createdAt DateTime    @default(now())
-  status    WatchStatus @default(pending)
+  status    WatchStatus @default(PENDING)
   // relations
   user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
   movie     Movie       @relation(fields: [movieId], references: [id], onDelete: Cascade)
@@ -53,8 +53,8 @@ model WatchList {
 
 // enums
 enum WatchStatus {
-  pending
-  watched
-  dropped
-  watching
+  PENDING
+  WATCHING
+  COMPLETED
+  DROPPED
 }
